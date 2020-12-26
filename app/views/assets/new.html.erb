@@ -1,4 +1,5 @@
 <%= simple_form_for [@user, @asset] do |f| %>
+  <%= f.input :trade, as: :date, html5: true, label: 'Pregão' %>
   <%= f.input :operation, label: 'C/V' %>
   <%= f.input :name, label: 'Ativo' %>
   <%= f.input :quantity, label: 'Quantidade' %>

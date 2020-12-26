@@ -21,6 +21,6 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:operation, :name, :quantity, :price, :emoluments)
+    params.require(:asset).permit(:trade, :operation, :name, :quantity, :price, :emoluments)
   end
 end
