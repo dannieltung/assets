@@ -9,6 +9,25 @@ class AssetsController < ApplicationController
     end
   end
 
+  def edit
+    @asset = Asset.find(params[:id])
+    unless @asset.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Edit 😥'
+    end
+  end
+
+  def update
+    @asset = Asset.find(params[:id])
+    unless @asset.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Update 😥'
+    end
+    if @asset.update(asset_params)
+      redirect_to root_path, notice: 'Asset Updated!'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @asset = Asset.find(params[:id])
     unless @asset.user == current_user
