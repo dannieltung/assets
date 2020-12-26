@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= simple_form_for [Asset.new] do |f| %>
+  <%= f.input :operation, label: 'C/V' %>
+  <%= f.input :name, label: 'Ativo' %>
+  <%= f.input :quantity, label: 'Quantidade' %>
+  <%= f.input :price, label: 'Preço' %>
+  <%= f.input :emoluments, label: 'Emolumentos' %>
+  <%= f.submit "File It", class: 'btn btn-success btn-lg' %>
+<% end %>
+<br>
+<% @assets.each do |asset| %>
+  <p>
+    <%= asset.trade %>
+    <%= asset.operation %>
+    <%= asset.name %>
+    <%= asset.quantity %>
+    <%= asset.price %>
+    <%= asset.emoluments %>
+    <%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity) * asset.quantity %>
+    <%= ((asset.quantity * asset.price) + asset.emoluments) / asset.quantity %>
+    <%= link_to "Delete", asset_path(asset), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </p>
+<% end %>

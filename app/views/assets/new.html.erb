@@ -1,0 +1,8 @@
+<%= simple_form_for [@user, @asset] do |f| %>
+  <%= f.input :operation, label: 'C/V' %>
+  <%= f.input :name, label: 'Ativo' %>
+  <%= f.input :quantity, label: 'Quantidade' %>
+  <%= f.input :price, label: 'Preço' %>
+  <%= f.input :emoluments, label: 'Emolumentos' %>
+  <%= f.submit "Arquivar", class: 'btn btn-success btn-lg' %>
+<% end %>
