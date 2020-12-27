@@ -22,8 +22,10 @@ class AssetsController < ApplicationController
     @quantity_sum = 0
     @value_sum = 0
     @assets.each do |asset|
-      @quantity_sum += asset.quantity
-      @value_sum += ((asset.quantity * asset.price) + asset.emoluments)
+      if asset.operation == "C"
+        @quantity_sum += asset.quantity
+        @value_sum += ((asset.quantity * asset.price) + asset.emoluments)
+      end
     end
   end
 
@@ -53,7 +55,7 @@ class AssetsController < ApplicationController
   def destroy
     @asset = Asset.find(params[:id])
     unless @asset.user == current_user
-      redirect_to root_path, notice: 'Not Allowed to Delete 😠'
+      redirect_to root_path, notice: 'Not Allowed to Delete 😥'
     end
     @asset.destroy
     redirect_to root_path, notice: 'Asset destroyed!'

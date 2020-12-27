@@ -36,8 +36,8 @@
         <td><%= asset.quantity %></td>
         <td><%= asset.price %></td>
         <td><%= asset.emoluments %></td>
-        <td><%= ((asset.quantity * asset.price) + asset.emoluments).round(2) %></td>
-        <td><%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity).round(2) %></td>
+        <td><%= asset.quantity.nil? ? asset.price : ((asset.quantity * asset.price) + asset.emoluments).round(2) %></td>
+        <td><%= asset.quantity.nil? ? asset.price : (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity).round(2) %></td>
       </tr>
     <% end %>
   </tbody>
