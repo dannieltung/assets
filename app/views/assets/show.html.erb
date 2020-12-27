@@ -1,4 +1,6 @@
 <table class="table table-striped">
+  <%= @quantity_sum %>
+  <%= @value_sum / @quantity_sum %>
   <thead>
     <tr>
       <th scope="col"></th>
@@ -24,8 +26,8 @@
         <td><%= asset.quantity %></td>
         <td><%= asset.price %></td>
         <td><%= asset.emoluments %></td>
-        <td><%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity) * asset.quantity %></td>
-        <td><%= ((asset.quantity * asset.price) + asset.emoluments) / asset.quantity %></td>
+        <td><%= ((asset.quantity * asset.price) + asset.emoluments).round(2) %></td>
+        <td><%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity).round(2) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,6 @@
 <%= simple_form_for [Asset.new] do |f| %>
   <%= f.input :trade, as: :date, html5: true, label: 'Trade' %>
-  <%= f.input :operation, label: 'C / V' %>
+  <%= f.input :operation, label: '(C)ompra  (V)enda  (E)ntrada' %>
   <%= f.input :name, label: 'Asset' %>
   <%= f.input :quantity, label: 'Amount' %>
   <%= f.input :price, label: 'Price' %>
@@ -34,8 +34,8 @@
         <td><%= asset.quantity %></td>
         <td><%= asset.price %></td>
         <td><%= asset.emoluments %></td>
-        <td><%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity) * asset.quantity %></td>
-        <td><%= ((asset.quantity * asset.price) + asset.emoluments) / asset.quantity %></td>
+        <td><%= ((asset.quantity * asset.price) + asset.emoluments).round(2) %></td>
+        <td><%= (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity).round(2) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -15,7 +15,13 @@ class AssetsController < ApplicationController
 
   def show
     asset = Asset.find(params[:id])
-    @assets = Asset.where(name: asset.name)
+    @assets = Asset.where(name: asset.name).sort_by { |event| [event.trade] }
+    @quantity_sum = 0
+    @value_sum = 0
+    @assets.each do |asset|
+      @quantity_sum += asset.quantity
+      @value_sum += ((asset.quantity * asset.price) + asset.emoluments)
+    end
   end
 
   def edit
