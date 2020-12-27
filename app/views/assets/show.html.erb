@@ -7,7 +7,7 @@
       <th scope="row"></th>
       <th scope="row"></th>
       <th scope="row"><%= @quantity_sum %></th>
-      <th scope="row"><%= (@value_sum / @quantity_sum).round(2) %></th>
+      <th scope="row"><%= number_to_currency((@value_sum / @quantity_sum)) %></th>
       <th scope="row"></th>
       <th scope="row"></th>
       <th scope="row"></th>
@@ -32,12 +32,12 @@
         <th scope="row"><%= link_to "Delete", asset_path(asset), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></th>
         <td><%= asset.trade.strftime('%d-%m-%y') %></td>
         <td><%= asset.operation %></td>
-        <td><%= link_to asset.name, asset_path(asset) %></td>
+        <td><%= asset.name %></td>
         <td><%= asset.quantity %></td>
-        <td><%= asset.price %></td>
-        <td><%= asset.emoluments %></td>
-        <td><%= asset.quantity.nil? ? asset.price : ((asset.quantity * asset.price) + asset.emoluments).round(2) %></td>
-        <td><%= asset.quantity.nil? ? asset.price : (((asset.quantity * asset.price) + asset.emoluments) / asset.quantity).round(2) %></td>
+        <td><%= number_to_currency(asset.price) %></td>
+        <td><%= number_to_currency(asset.emoluments) %></td>
+        <td><%= asset.quantity.nil? ? number_to_currency(asset.price) : number_to_currency(((asset.quantity * asset.price) + asset.emoluments)) %></td>
+        <td><%= asset.quantity.nil? ? number_to_currency(asset.price) : number_to_currency((((asset.quantity * asset.price) + asset.emoluments) / asset.quantity)) %></td>
       </tr>
     <% end %>
   </tbody>
