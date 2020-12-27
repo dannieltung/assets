@@ -1,13 +1,3 @@
-<%= simple_form_for [Asset.new] do |f| %>
-  <%= f.input :trade, as: :date, html5: true, label: 'Trade' %>
-  <%= f.input :operation, label: 'C / V' %>
-  <%= f.input :name, label: 'Asset' %>
-  <%= f.input :quantity, label: 'Amount' %>
-  <%= f.input :price, label: 'Price' %>
-  <%= f.input :emoluments, label: 'Emoluments' %>
-  <%= f.submit "File It", class: 'btn btn-primary btn-lg btn-block' %>
-<% end %>
-<br>
 <table class="table table-striped">
   <thead>
     <tr>

@@ -1,12 +1,19 @@
 class AssetsController < ApplicationController
   def create
+    name = params[:asset][:name]
     @asset = Asset.new(asset_params)
     @asset.user = current_user
+    @asset.name = name.upcase
     if @asset.save
       redirect_to root_path, notice: 'Product created!'
     else
       render :new
     end
+  end
+
+  def show
+    asset = Asset.find(params[:id])
+    @assets = Asset.where(name: asset.name)
   end
 
   def edit
@@ -40,6 +47,6 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:trade, :operation, :name, :quantity, :price, :emoluments)
+    params.require(:asset).permit(:trade, :operation, :name.upcase, :quantity, :price, :emoluments)
   end
 end
