@@ -29,8 +29,8 @@
         <!-- <th scope="row"><%= link_to "Update", edit_asset_path(asset), class: "btn btn-secondary btn-sm" %></th>
         <th scope="row"><%= link_to "Delete", asset_path(asset), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></th> -->
         <td><%= asset.trade.strftime('%d-%m-%y') %></td>
-        <td><%= asset.operation.upcase %></td>
-        <td><%= link_to asset.name.upcase, asset_path(asset) %></td>
+        <td><%= asset.operation %></td>
+        <td><%= link_to asset.name, asset_path(asset) %></td>
         <td><%= asset.quantity %></td>
         <td><%= asset.price %></td>
         <td><%= asset.emoluments %></td>

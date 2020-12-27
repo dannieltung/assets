@@ -5,5 +5,4 @@ class PagesController < ApplicationController
     assets = Asset.where(user: current_user)
     @assets = assets.sort_by { |event| [event.trade] }
   end
-
 end

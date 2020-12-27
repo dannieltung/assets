@@ -15,6 +15,9 @@ class AssetsController < ApplicationController
 
   def show
     asset = Asset.find(params[:id])
+    unless asset.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Show this 😥'
+    end
     @assets = Asset.where(name: asset.name).sort_by { |event| [event.trade] }
     @quantity_sum = 0
     @value_sum = 0
@@ -36,6 +39,10 @@ class AssetsController < ApplicationController
     unless @asset.user == current_user
       redirect_to root_path, notice: 'Not allowed to Update 😥'
     end
+    name = params[:asset][:name]
+    operation = params[:asset][:operation]
+    @asset.name = name.upcase
+    @asset.operation = operation.upcase
     if @asset.update(asset_params)
       redirect_to root_path, notice: 'Asset Updated!'
     else
@@ -55,6 +62,6 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:trade, :operation, :name.upcase, :quantity, :price, :emoluments)
+    params.require(:asset).permit(:trade, :operation.upcase, :name.upcase, :quantity, :price, :emoluments)
   end
 end
