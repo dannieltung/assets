@@ -1,9 +1,11 @@
 class AssetsController < ApplicationController
   def create
     name = params[:asset][:name]
+    operation = params[:asset][:operation]
     @asset = Asset.new(asset_params)
     @asset.user = current_user
     @asset.name = name.upcase
+    @asset.operation = operation.upcase
     if @asset.save
       redirect_to root_path, notice: 'Product created!'
     else

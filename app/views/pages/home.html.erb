@@ -11,8 +11,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <!-- <th scope="col"></th>
+      <th scope="col"></th> -->
       <th scope="col">Trade</th>
       <th scope="col"></th>
       <th scope="col">Name</th>
@@ -26,8 +26,8 @@
   <tbody>
     <% @assets.each do |asset| %>
       <tr>
-        <th scope="row"><%= link_to "Update", edit_asset_path(asset), class: "btn btn-secondary btn-sm" %></th>
-        <th scope="row"><%= link_to "Delete", asset_path(asset), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></th>
+        <!-- <th scope="row"><%= link_to "Update", edit_asset_path(asset), class: "btn btn-secondary btn-sm" %></th>
+        <th scope="row"><%= link_to "Delete", asset_path(asset), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></th> -->
         <td><%= asset.trade.strftime('%d-%m-%y') %></td>
         <td><%= asset.operation.upcase %></td>
         <td><%= link_to asset.name.upcase, asset_path(asset) %></td>
