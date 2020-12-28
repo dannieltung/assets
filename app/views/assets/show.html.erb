@@ -7,7 +7,7 @@
       <th scope="row"></th>
       <th scope="row"></th>
       <th scope="row"><%= @quantity_sum %></th>
-      <th scope="row"><%= number_to_currency((@value_sum / @quantity_sum)) %></th>
+      <th scope="row"><%= number_to_currency((@value_sum - @income_sum) / @quantity_sum) %></th>
       <th scope="row"></th>
       <th scope="row"></th>
       <th scope="row"></th>

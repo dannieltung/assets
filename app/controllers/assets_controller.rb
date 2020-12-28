@@ -21,10 +21,13 @@ class AssetsController < ApplicationController
     @assets = Asset.where(name: asset.name).sort_by { |event| [event.trade] }
     @quantity_sum = 0
     @value_sum = 0
+    @income_sum = 0
     @assets.each do |asset|
       if asset.operation == "C"
         @quantity_sum += asset.quantity
         @value_sum += ((asset.quantity * asset.price) + asset.emoluments)
+      elsif asset.operation == "E"
+        @income_sum += asset.price
       end
     end
   end

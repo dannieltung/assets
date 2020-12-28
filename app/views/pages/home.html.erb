@@ -3,7 +3,7 @@
     <%= "#{number_to_currency(@total_invested)}" %>
     <%= simple_form_for [Asset.new] do |f| %>
       <%= f.input :trade, as: :date, html5: true, label: 'Trade' %>
-      <%= f.input :operation, label: 'C - V - E' %>
+      <%= f.input :operation, label: 'C / V / E' %>
       <%= f.input :name, label: 'Asset' %>
       <%= f.input :quantity, label: 'Amount' %>
       <%= f.input :price, label: 'Price' %>
